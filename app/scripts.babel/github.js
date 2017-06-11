@@ -11,3 +11,7 @@ export function getRepos(token) {
     return response.json();
   })
 }
+
+export function onRepoClick(name) {
+  console.log('Clicked on repo ', name);
+}

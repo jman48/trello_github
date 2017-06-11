@@ -15,7 +15,8 @@
     ]
   },
   "permissions": [
-    "storage"
+    "storage",
+    "https://api.github.com/"
   ],
   "content_scripts": [
     {

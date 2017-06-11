@@ -1,8 +1,20 @@
 'use strict';
+
+import { getRepos } from './github';
+
 const CUSTOM_BUTTON = '<a class="button-link trello-github">Create issue</a>';
+let repositories = [];
 
 $(document).ready(function () {
   console.log('Running');
+
+  //Load all repositories
+  chrome.storage.local.get('token', function(tokenObject) {
+    getRepos(tokenObject.token).then((repos) => {
+      repositories = repos;
+    });
+  });
+
   $('body').on('DOMNodeInserted', function (event) {
 
     //Only add our custom button if the list we want to add it to has been added to page

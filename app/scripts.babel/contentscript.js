@@ -1,6 +1,6 @@
 'use strict';
 
-import { getRepos } from './github';
+import { getRepos, setToken } from './github';
 import { showPopOver, hidePopOver, listAdded } from './elements';
 
 const CUSTOM_BUTTON = '<a class="button-link trello-github">Create issue</a>';
@@ -11,7 +11,9 @@ $(document).ready(function () {
 
   //Load all repositories
   chrome.storage.local.get('token', function(tokenObject) {
-    getRepos(tokenObject.token).then((repos) => {
+    setToken(tokenObject.token);
+
+    getRepos().then((repos) => {
       repositories = repos;
     });
   });

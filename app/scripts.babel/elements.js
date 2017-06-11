@@ -1,4 +1,4 @@
-import { onRepoClick } from './github';
+import { createIssue } from './github';
 
 export function showPopOver(x, y, repos) {
   const popOver = $('.pop-over');
@@ -39,7 +39,7 @@ function createPopoverContent(repos) {
     })
   );
 
-  $(content).find('a').on('click', onRepoClick);
+  $(content).find('a').on('click', (event) => createIssue($(event.target).text()));
 
   return content;
 }

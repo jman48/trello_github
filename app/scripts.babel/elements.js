@@ -43,3 +43,12 @@ function createPopoverContent(repos) {
 
   return content;
 }
+
+export function getLink(title) {
+  let link = $('.card-detail-window').find('a.date')[0].href;
+
+  let hashIndex = link.indexOf('#');
+  link = link.substring(0, hashIndex);
+
+  return `![](https://github.trello.services/images/mini-trello-icon.png) [${title}](${link})`;
+}

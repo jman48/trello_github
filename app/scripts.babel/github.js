@@ -16,7 +16,8 @@ export function getRepos() {
 }
 
 export function createIssue(repo) {
-  const title = $('.mod-card-back-title').val();
+  const card_title = $('.mod-card-back-title').val();
+  const title = removeStoryPoints(card_title);
 
   fetch(`${GITHUB_URL}/repos/${DEFAULT_ORG}/${repo}/issues`, {
     method: 'post',
@@ -38,4 +39,12 @@ export function createIssue(repo) {
 
 export function setToken(token) {
   TOKEN = token;
+}
+
+function removeStoryPoints(title) {
+  if (title.startsWith('(')) {
+    return title.substring(3, title.length);
+  }
+
+  return title;
 }
